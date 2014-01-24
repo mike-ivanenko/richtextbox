@@ -1,0 +1,52 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://rangy.googlecode.com/svn/trunk/currentrelease/rangy-core.js"></script>
+<script src="http://rangy.googlecode.com/svn/trunk/dev/rangy-textrange.js"></script>
+<script src="http://rangy.googlecode.com/svn/trunk/currentrelease/rangy-selectionsaverestore.js"></script>
+<script language="javascript" src="jquery.richtextbox.min.js"></script>
+<style>
+.input {
+	border:1px solid #ccc;
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	padding:3px;
+	width:200px;
+	height:23px;
+}
+.focus{
+	border:1px solid #888;
+	background-color:#fff;
+}
+.highlighted {
+	border-radius:2px;
+	background:#06C;
+	color:#fff;
+}
+</style>
+</head>
+<body>
+<div>
+<input type="text" class="input" id="ttt" name="ttt" value="this is #epic" />
+</div>
+<script language="javascript">
+$(document).ready(function() {
+	$('#ttt').richtextbox( {
+			highlights: [
+				{key:'#', style:'highlighted', markup: 'topic'},
+				{key:'@', style:'highlighted', markup: 'people'}
+			]
+			,change:function(richtextfield, input) {
+				$('#output').val(input.val());
+			}
+		}
+	);
+});
+</script>
+<p>
+Input @ and # for tagging people's name or topic!<BR>
+Form post value will be sent as following.
+</p>
+<textarea id="output" style="width:300px;height:200px;"></textarea>
+</body>
+</html>
